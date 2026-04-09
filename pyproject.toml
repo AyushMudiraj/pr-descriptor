@@ -3,7 +3,7 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pr-writer"
+name = "pr-descriptor"
 version = "0.1.0"
 description = "AI-powered PR description generator using Claude"
 requires-python = ">=3.10"
@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.scripts]
-pr-writer = "pr_writer.cli:main"
+pr-descriptor = "pr_writer.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]

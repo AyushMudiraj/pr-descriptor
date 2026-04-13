@@ -1,5 +1,5 @@
 import os
-from typing import Iterator
+from typing import Iterator, Optional
 
 from .git_utils import GitContext
 
@@ -130,7 +130,7 @@ _PROVIDERS = [
 def stream_pr_description(ctx: GitContext) -> Iterator[str]:
     """Stream PR description, falling back across providers if one is exhausted."""
     prompt = _build_prompt(ctx)
-    last_error: Exception | None = None
+    last_error: Optional[Exception] = None
 
     for name, env_var, stream_fn in _PROVIDERS:
         key = os.getenv(env_var)

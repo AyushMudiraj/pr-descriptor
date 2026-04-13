@@ -103,7 +103,7 @@ def _ensure_platform_token(ctx_git) -> None:
 @click.option("--copy", "-c", is_flag=True, help="Copy the generated description to clipboard.")
 @click.option("--push", "-p", is_flag=True, help="Update the open PR on GitHub/Gitea with the description.")
 @click.option("--raw", is_flag=True, help="Print raw Markdown without the formatted preview panel.")
-@click.version_option(version="0.1.3")
+@click.version_option(version="0.1.4")
 @click.pass_context
 def main(ctx: click.Context, base: str, repo: str, copy: bool, push: bool, raw: bool) -> None:
     """Generate AI-powered PR descriptions from your git diff.
@@ -168,7 +168,7 @@ def main(ctx: click.Context, base: str, repo: str, copy: bool, push: bool, raw: 
 
     # ── Stream description ───────────────────────────────────────────────────
     console.print("[bold green]Generating PR description[/bold green]\n")
-    parts: list[str] = []
+    parts = []  # type: list
     try:
         for token in stream_pr_description(ctx_git):
             console.print(token, end="")
